@@ -3,7 +3,7 @@ const { Client } = require('pg');
 async function getConnection() {
   const client = new Client({
     host: 'localhost',
-    port: ****,
+    port: '****',
     user: 'example',
     password: 'password',
     database: 'my_DB'
