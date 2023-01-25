@@ -1,5 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
+
 const USER_TABLE = 'users';
 
 const UserSchema = {
@@ -23,12 +24,20 @@ const UserSchema = {
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue: Sequelize.NOW
+  },
+  role: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    defaultValue: 'customer'
   }
 }
 
 class User extends Model {
-  static associate() {
-    //models
+  static associate(models) {
+    this.hasOne(models.Customer, {
+      as: 'customer',
+      foreignKey: 'userId'
+    });
   }
 
   static config(sequelize) {
