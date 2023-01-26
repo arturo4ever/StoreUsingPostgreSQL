@@ -23,9 +23,7 @@ class ProductsService {
   }
 
   async create(data) {
-    const newProduct = await models.Product.create(data, {
-      include: ['category']
-    });
+    const newProduct = await models.Product.create(data);
     return newProduct;
   }
 
